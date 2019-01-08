@@ -1,0 +1,181 @@
+//Cache Angus
+//Student ID: 20000629
+//Assignment 2 code
+import java.util.ArrayList;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class GuessMaster {
+
+	private int numberOfCandidateEntities = 3; // indicates how many candidates are in this gaem
+	private static Entity[] entities;// holds these entities
+	int sumTickets = 0;
+	// ArrayList<Entity> entities;
+	
+	public GuessMaster() {
+
+		entities = new Entity[numberOfCandidateEntities];
+		numberOfCandidateEntities = 0;
+		
+		// ArrayList<Entity> entities = new ArrayList<Entity>();
+
+	}
+
+	public void addEntity(Entity entity) { /*
+		if(entity instanceof Politician) {
+			Entity newentity = ((Politician) entity).cloner(entity);
+			entities[numberOfCandidateEntities] = newentity;
+			numberOfCandidateEntities++;
+		}
+		else if (entity instanceof Country) {
+			Entity newentitiy =((Country) entity).cloner(entity);
+			entities[numberOfCandidateEntities] = newentitiy;
+			numberOfCandidateEntities++;
+		} else if (entity instanceof Person) {
+			Entity newentitiy =((Person) entity).cloner(entity);
+			entities[numberOfCandidateEntities] = newentitiy;
+			numberOfCandidateEntities++;
+		//} else (entity instanceof Entity){
+		// entities.add(entity); */
+		entities[numberOfCandidateEntities] = entity;
+		numberOfCandidateEntities++;
+		//}
+	}
+	public void addEntity(Person person) {
+		Entity newentity = person.cloner(person);
+		entities[numberOfCandidateEntities] = newentity;
+		numberOfCandidateEntities++;
+	}
+	public void addEntity(Country country) {
+		Country temp = country.cloner(country);
+		Entity newentity = temp;
+		entities[numberOfCandidateEntities] = newentity;
+		numberOfCandidateEntities++;
+	}
+	
+	public void addEntity(Singer singer) {
+		Entity newentity = singer.cloner(singer);
+		entities[numberOfCandidateEntities] = newentity;
+		numberOfCandidateEntities++;
+	}
+	public void addEntity(Politician politician) {
+		Entity newentity = politician.cloner(politician);
+		entities[numberOfCandidateEntities] = newentity;
+		numberOfCandidateEntities++;
+	}
+
+	public void playGame(int entityInd) {
+		// Entity guessing = entities.get(entityInd);
+		Entity guessing = entities[entityInd];
+		// System.out.println(guessing);
+		playGame(guessing);
+	}
+
+	public void playGame(Entity entity) {
+		
+		Date birthdate = entity.born;
+		String nameof = entity.name;
+		
+
+		entity.welcomeMessage();
+		//entity.printString();
+		System.out.println("Type in the format of mm/dd/yyyy");
+
+		Scanner scanner = new Scanner(System.in);
+		String input = scanner.nextLine();
+		if (input.equalsIgnoreCase("quit")) {
+			
+			System.exit(10);
+		} else {
+			Date guess = new Date(input);
+
+			if ((guess instanceof Date) && (guess != null))// check to see if it is a string and its not empty, should
+														// probably check that its of the right format but how i may ask
+			{
+				// date is now set as a string and then setDate does its work
+				// need to add:
+				if (guess.precedes(birthdate)) // check this, if the date is too early then try again
+				{
+					System.out.println("Too early, guess again!");
+					playGame(entity);
+				} else if (guess.equals(birthdate)) {
+					// check to see if their guess is equal to the entity.born
+					// if it is then be like yo, you did it!
+					String winner = entity.toString();
+					//keep counter of tickets won
+					sumTickets = entity.getAwardTicketNumber(entity) + sumTickets;
+					entity.closingMessage();
+					System.out.println("\n You've won" +sumTickets + "this game.")
+					System.out.println("\n Type quit to exit or any other key to play again!");
+					// String again = scanner.nextLine(); this next bit could be added so they press
+					// enter to get the next person
+					
+					String start = scanner.nextLine();
+					if(start.equalsIgnoreCase("quit")) {
+						System.out.println("Thanks for Playing!");
+						System.exit(10);
+					}
+					else {	// goes back and gets a new index and therefore a new person to test it on
+						playGame();
+					}
+				}
+
+				else {
+					// then say its too late
+					System.out.println("Too late, guess again!");
+					playGame(entity); // i love recursion
+				}
+
+			}
+
+		} {
+			System.out.println("Invalid Input, guess again!"); // if its not a string like we asked for then we can't
+																// use it
+			playGame(entity);//once again recursion is great
+		}
+
+		// need to check that the input is equal to a string and then check that it is
+		// equal to the entity already in place
+
+	}
+	
+	public void playGame() {
+		System.out.println("Time to Play Guess Master!"); 
+		int number = getRandomEntityInd();
+		playGame(number); //gets your numba and then puts it into the index version of playGame
+	}
+
+	int getRandomEntityInd() {
+		Random random = new Random();
+		
+		int index = random.nextInt(entities.length - 1); //after getting the number it makes sure that the index is wihtin bounds
+
+		return index;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		// Scanner scanner = new Scanner(System.in);
+		// String try = scanner.nextLine();
+
+		Politician trudeau = new Politician("Justin Trudeau", new Date("December", 25, 1971), "Male", "Lineral", 0.25);
+		Singer dion = new Singer("Celine Dion", new Date("March", 30, 1968), "Female", "la voix du bon Dieu", new Date("November", 6, 1981), 0.5);
+		Person myCreator = new Person("Cache Angus", new Date("December", 5, 1997), "Female", 1);
+		
+		Country usa = new Country("United States", new Date("July", 14, 1776), "Washington D.C.", 0.1);
+
+		GuessMaster gm = new GuessMaster();
+		gm.addEntity(trudeau);
+		gm.addEntity(dion);
+		gm.addEntity(myCreator);
+		//gm.addEntity(usa);
+
+		// System.out.println(entities.size());
+
+		gm.playGame();
+
+	}
+
+}

@@ -1,0 +1,20 @@
+import java.sql.Date;
+
+public class Entity {
+	private String name;
+	private Date born;
+
+	public String toString(){
+		
+		String bornString;
+				
+		bornString = born.toString();
+		
+		return (name + "," + bornString);
+	
+	}
+
+	
+
+	
+}

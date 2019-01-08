@@ -1,0 +1,50 @@
+
+public class Country extends Entity {
+	protected String capital;
+	
+	public Country (String newname, Date newdate, double newdifficulty) {
+		super(newname, newdate, newdifficulty);
+		capital = "";
+	}
+	
+	public Country (String newname, Date newdate, String newcapital, double newdifficulty) {
+		super(newname, newdate, newdifficulty);
+		capital = newcapital;
+	}
+	
+	public Country(Country newCountry) {
+		/*this.name = newCountry.name;
+		this.born = newCountry.born;
+		this.difficulty = newCountry.difficulty;
+		this.capital = newCountry.capital;*/
+		
+		//check to make sure this won't create a privacy leak if not use format but go back and use the newCountry.born thing
+		this(newCountry.setName(), newCountry.setBirth(),newCountry.getCapital(), newCountry.setDifficulty());
+	}
+	/*public String getCapital(String newcapital) {
+		this.capital = newcapital;
+		return capital;*/
+	//}
+	public String getCapital() {
+		return capital;
+	}
+	@Override
+	String entityType() {
+		return ("This entity is a country!");
+		
+	}
+
+	//clone method
+	public Country cloner(Country copyCountry) {
+		Country newCountry = new Country(copyCountry);
+		return newCountry;
+	}
+	
+	public String toString() {
+		super.toString();
+		//check to make sure printString doesn't need to be returned
+		return ("\n Capital:"+capital);
+		
+	}
+
+}

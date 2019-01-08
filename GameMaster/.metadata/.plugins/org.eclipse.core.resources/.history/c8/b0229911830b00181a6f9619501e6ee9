@@ -1,0 +1,67 @@
+package PersonAndDate;
+import java.util.Scanner;
+import java.util.Random;
+
+public class GuessMaster {
+	
+	private int numberOfCandidateEntities; //indicates how many candidates are in this gaem
+	private Entity[] entities; //holds these entities
+	
+	public GuessMaster() {
+		numberOfCandidateEntities = 1;
+		entities = new Entity("Cache", new Date("December", 5, 1997));
+	}
+	
+	
+	
+	public void addEntity(Entity entity) {
+		entities[numberOfCandidateEntities] = entity;
+		numberOfCandidateEntities++;
+			
+	}
+	
+	public void playGame(int entityInd) {
+		Entity guessing = entities[entityInd];
+		
+		playGame(guessing);
+	}
+	
+	public void playGame(Enitity entity) {
+		Date birthdate = entity.born;
+		String nameof = entity.name;
+		
+		
+	}
+	
+	public void playGame() {
+		
+	}
+	
+	int getRandomEntityInd() {
+		Random random = new Random();
+		int index = random.nextInt(entities.length);
+		return index;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner scanner = new Scanner(System.in);
+		String try = scanner.nextLine();
+				
+		Entity trudeau = new Entity("Justin Trudeau", new Date("December", 25, 1971));
+		Entity dion = new Entity("Celine Dion", new Date("March", 30, 1968));
+		Entity usa = new Entity("United States", new Date("July", 14, 1776));
+		
+		GuessMaster gm = new GuessMaster();
+		gm.addEntity(trudeau);
+		gm.addEntity(dion);
+		gm.addEntity(usa);
+		
+		playGame();	
+		
+		
+		
+	}
+
+}

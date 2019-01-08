@@ -1,0 +1,35 @@
+package PersonAndDate; //make sure to 
+
+public class Entity {
+	private String name;
+	private Date born;
+	
+	public Entity()
+	{
+		name = "Cache Angus";
+		born = "12/05/97";
+		
+	}
+	
+	public Entity(String newname, Date newdate) {
+		
+		
+	}
+
+	public String toString(){ //this returns the content for string
+		
+		String bornString;
+				
+		bornString = born.toString();
+		
+		return (name + ", born on" + bornString);
+	
+	}
+
+	public boolean equals(Entity entity) {
+		
+		return ((name.equals(entity.name) && (born.equals(entity.born));
+	}
+
+	
+}

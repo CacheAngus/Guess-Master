@@ -1,0 +1,68 @@
+ //make sure to check this
+//make sure things don't equate to null first! add that\!
+
+public class Entity {
+	private String name;
+	private Date born;
+	
+	public Entity()
+	{
+		name = "Cache Angus";
+		born = new Date();
+		
+	}
+	
+	public Entity(String newname, Date newdate) {
+		name = newname;
+		born = newdate;
+		}
+	
+	public String setName(String newName) {
+		this.name = newName;
+		return name;
+	}
+	
+	public Date setBirth(Date newDate) {
+		return new Date(newDate);
+	}
+
+	public void printString() { //writes the string out
+	
+		if (born == null) {
+			System.out.println("Not Valid");
+		}
+		System.out.println(name);
+	}
+	public String toString(){ //this returns the content for string
+		
+		String bornString;
+		
+		if(born == null) {
+			return "Invalid date";
+		}
+		else {		
+		bornString = born.toString();
+		
+		return (name + ", born on" + bornString);
+		}
+	
+	}
+//look into editing these
+	public boolean equals(Entity entity) { //checks to see if they are equal dates
+		if(entity.born ==  null) {
+			return false;
+		}
+		else {
+		return (born.equals(entity.born));
+		}
+	}
+
+	public boolean precedes(Entity entity) { //checks if the date preceded the guessed date
+		if (born.precedes(entity.born)) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+}

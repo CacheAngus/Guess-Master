@@ -1,0 +1,8 @@
+
+public class Singer {
+
+	public Singer() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,20 @@
+
+public class Singer extends Entity {
+
+	public Singer() {
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	String entityType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	Entity cloner() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

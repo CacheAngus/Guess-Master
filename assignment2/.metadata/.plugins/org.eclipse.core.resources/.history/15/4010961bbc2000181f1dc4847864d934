@@ -1,0 +1,31 @@
+
+public class Country extends Entity {
+	protected String capital;
+	
+	public Country (String newname, Date newdate, double newdifficulty) {
+		super(newname, newdate, newdifficulty);
+		capital = "";
+	}
+	
+	public Country (String newname, Date newdate, double newdifficulty, String newcapital) {
+		super(newname, newdate, newdifficulty);
+		capital = newcapital;
+	}
+	
+	public String getCapital(String newcapital) {
+		this.capital = newcapital;
+		return capital;
+	}
+	@Override
+	String entityType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	//copy constructor 
+	public Country cloner(Country country) {
+		Country newCountry = new Country(name, born, difficulty, capital);
+		return newCountry;
+	}
+
+}

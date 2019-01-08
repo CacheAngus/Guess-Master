@@ -1,0 +1,58 @@
+ //make sure to check this
+
+public class Entity {
+	private String name;
+	private Date born;
+	
+	public Entity()
+	{
+		name = "Cache Angus";
+		born = new Date();
+		
+	}
+	
+	public Entity(String newname, Date newdate) {
+		name = newname;
+		born = newdate;
+		}
+	
+	public String setName(String newName) {
+		this.name = newName;
+		return name;
+	}
+	
+	public Date setBirth(Date newDate) {
+		return new Date(newDate);
+	}
+
+	public void printString() {
+	
+		if (born == null) {
+			System.out.println("Not Valid");
+		}
+		System.out.println("Person:" + name);
+	}
+	public String toString(){ //this returns the content for string
+		
+		String bornString;
+				
+		bornString = born.toString();
+		
+		return (name + ", born on" + bornString);
+	
+	}
+//look into editing these
+	public boolean equals(Entity entity) {
+		
+		return (born.equals(entity.born));
+	}
+
+	public boolean precedes(Entity entity) {
+		if (born.precedes(entity.born)) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+}

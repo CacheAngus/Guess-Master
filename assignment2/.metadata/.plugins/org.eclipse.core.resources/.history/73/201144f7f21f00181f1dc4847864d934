@@ -1,0 +1,95 @@
+//assignment 2
+
+public abstract class Entity {
+	protected String name;
+    protected Date born;
+    protected double difficulty;
+	
+	public Entity() //nice default constructor
+	{
+		name = "Cache Angus";
+		born = new Date();
+		difficulty = 0.0;
+		
+	}
+		
+	public Entity(String newname, Date newdate, double newdifficulty) { //initializes an entity with these features
+		name = newname;
+		born = newdate;
+		difficulty = newdifficulty;
+		}
+	abstract String entityType();
+	//will return a string, returns a short description about the type of class
+		
+	abstract Entity clone();
+	
+	public void welcomeMessage() {
+		String type = entityType();
+		System.out.println("Welcome! Let's Start the Game! This is a" +type +".\n");
+	}
+	public void closingMessage() {
+		Entity guessed = clone();
+		System.out.println("Congratulations! The detailed information of the entity you guessed is:" +guessed);
+		
+
+	}
+	public int getAwardTicketNumber(Entity entity) {
+		int tickets;
+		tickets = (int)entity.difficulty;
+		tickets = tickets*100;
+		return tickets;
+	}
+	public String setName(String newName) { //gives it a name
+		this.name = newName;
+		return name;
+	}
+	
+	public Date setBirth(Date newDate) { //gives it a date without changing the value
+		return new Date(newDate);
+	}
+	
+	public double setDifficulty(double newdifficulty) {
+		this.difficulty = newdifficulty;
+		return difficulty;
+	}
+
+	public void printString() { //writes the string out
+	
+		if ((born == null)|| (difficulty <0) || (difficulty > 1)) {
+			System.out.println("Not Valid");
+		}
+		
+		System.out.println(born);
+	}
+	public String toString(){ //this returns the content for string
+		
+		String bornString;
+		String difficultyString;
+		
+		if((born == null) || (difficulty <0) || (difficulty >1)) {
+			return "Invalid entry";
+		}
+		else {		
+		bornString = born.toString();
+		difficulty = difficulty*100;
+		difficultyString = Double.toString(difficulty);
+		
+		return (name + ", born on" + bornString+ ". \n You've won" +difficultyString + "tickets");
+		}
+	
+	}
+//look into editing these
+	public boolean equals(Entity entity) { //checks to see if they are equal dates
+		if(entity.born ==  null) {
+			return false;
+		}
+		else {
+		return (born.equals(entity.born));
+		}
+	}
+
+	public boolean precede(Entity entity) { //checks if the date preceded the guessed date
+		return (entity.born.precedes(born));
+			
+	}	
+}

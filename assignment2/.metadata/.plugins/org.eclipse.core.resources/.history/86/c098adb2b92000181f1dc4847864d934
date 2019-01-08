@@ -1,0 +1,19 @@
+public class Politician extends Entity {
+
+	public Politician() {
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	String entityType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	Entity clone() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

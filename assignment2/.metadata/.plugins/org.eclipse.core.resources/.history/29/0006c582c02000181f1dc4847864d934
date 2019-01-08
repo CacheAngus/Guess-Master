@@ -1,0 +1,18 @@
+public class Singer extends Person {
+	protected String debutAlbum;
+	protected Date debutAlbumReleaseDate;
+	
+	public Singer(String newname, Date newdate, double newdifficulty, String newgender) {
+		super(newname, newdate, newdifficulty, newgender);
+		debutAlbum = "";
+		debutAlbumReleaseDate = new Date();
+	}
+	
+	public Singer(String newname, Date newdate, double newdifficulty, String newgender, String newdebutAlbum, Date newReleaseDate) {
+		super(newname, newdate, newdifficulty, newgender);
+		debutAlbum = newdebutAlbum;
+		debutAlbumReleaseDate = newReleaseDate;
+	
+	}
+
+}

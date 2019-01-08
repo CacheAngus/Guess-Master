@@ -1,0 +1,59 @@
+public class Singer extends Person {
+	protected String debutAlbum;
+	protected Date debutAlbumReleaseDate;
+	
+	public Singer(String newname, Date newdate,String newgender, double newdifficulty) {
+		super(newname, newdate,  newgender, newdifficulty);
+		debutAlbum = "";
+		debutAlbumReleaseDate = new Date();
+	}
+	
+	public Singer(String newname, Date newdate, String newgender, String newdebut, Date newdebutdate, double d) {
+		super(newname, newdate, newgender, d);
+		debutAlbum = newdebut;
+		debutAlbumReleaseDate = newdebutdate;
+	
+	}
+	//copy constructor
+public Singer(Singer newSinger) {
+		
+		
+		//check to make sure this won't create a privacy leak if not use format but go back and use the newCountry.born thing
+		this(newSinger.setName(), newSinger.setBirth(), newSinger.getGender(), newSinger.getDebutAlbum(), newSinger.getDebutAlbumRelease(), newSinger.setDifficulty());
+	}
+	
+	public Date getDebutAlbumRelease() {
+	
+	return debutAlbumReleaseDate;
+}
+
+	public String getDebutAlbum() {
+	
+	return debutAlbum;
+}
+
+	public String getGender() {
+		return gender;
+	}
+	@Override
+	String entityType() {
+		return ("This entity is a singer!");
+		
+	}
+
+	//clone method
+	public Singer cloner(Singer copySinger) {
+		Singer newSinger = new Singer(copySinger);
+		return newSinger;
+	}
+	
+	public String toString() {
+		super.toString();
+		//check to make sure printString doesn't need to be returned
+		if((debutAlbum == null) || (debutAlbumReleaseDate == null)) {
+			return ("Not a valid entry!");
+		} else {
+		return ("\n Debut Album:" +debutAlbum +"\n Debut Album Release Date:" +debutAlbumReleaseDate);
+		}
+	}
+}

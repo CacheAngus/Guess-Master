@@ -1,0 +1,16 @@
+
+public class Country extends Entity {
+
+	@Override
+	String entityType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	Entity clone() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

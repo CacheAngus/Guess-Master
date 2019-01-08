@@ -1,0 +1,7 @@
+public class Politician {
+
+	public Politician() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

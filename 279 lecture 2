@@ -1,0 +1,36 @@
+279 lecture 2
+object oriented programming-uses classes/objects that it surrounds, i.e. public, private class
+also involves methods and data
+basic java
+-applet: its meant to be run from a web browser, cannot be provided by html eg captures mouse input and also have controls like buttons and checking boxes, moble borowsers dont run them tho
+
+public classs BankAccount {
+		private String Owner;
+		private int account;
+
+
+
+
+		public void deposit (double amount){}
+
+		public static void main(String[] args){
+
+			System.out.printIn("Hellow World! \nHello Customer :) !"); <- call the object name . function them matter e.e Math.min
+			System.out.printf(This ismy day %d", 2);
+		}
+}
+
+everything is defined by .java
+each class is compiled wwith javac 
+
+running class contains the main method
+
+public static void main(String[] args)
+
+byte-code does a two step way to translate it into machine language (ege bankaccount.class) its a machine language for a java virtual machine
+	its first translate by an interpreter and executes each byte-code instruction one after another, this is usually done by a set of instructions
+
+Syntax and Sematics:
+	
+	identifier: the name of a variable or other item defined in a program
+	predefined identifiers in libraries requred by java language standard-public system, string, printIn
